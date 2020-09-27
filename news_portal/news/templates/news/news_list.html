@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News</title>
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+        <h2 class="sidebar-title">Search</h2>
+    <form action="{% url 'search' %}" method="get">
+        <input type="text" name="s" placeholder="Search">
+        <input type="submit" value="Search">
+    </form>
+
+    {{ value | linebreaks }}
+    <hr/>
+    {% for item in object_list %}
+    <img src="{{ item.image }}" alt="">
+    <h3> News:</h3> {{ item }}
+
+    {{ value | linebreaks }}
+
+    <h4>Description:</h4>{{ item.description }}
+
+    {{ value | linebreaks }}
+
+    <h5>Create_at:</h5>{{ item.create_at }}
+
+    {{ value | linebreaks }}
+    <hr/>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>
